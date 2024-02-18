@@ -19,3 +19,9 @@
 <div class="date">
   <p>{date}</p>
 </div>
+
+<style>
+  .date {
+    font-size: 1rem;
+  }
+</style>

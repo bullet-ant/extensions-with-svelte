@@ -1,14 +1,23 @@
 <script>
-  import { onMount, onDestroy } from 'svelte';
+  import { onMount, onDestroy } from "svelte";
+  import { v4 as uuidv4 } from "uuid";
 
   let todos = [];
-  let newTodo = { task: "", isCompleted: false };
+  let newTodo = {
+    id: uuidv4(),
+    task: "",
+    isCompleted: false,
+  };
   let showTodos = false;
 
   const addTodo = () => {
     if (newTodo.task.trim() !== "") {
       todos = [...todos, { ...newTodo }];
-      newTodo = { task: "", isCompleted: false };
+      newTodo = {
+        id: uuidv4(),
+        task: "",
+        isCompleted: false,
+      };
     }
   };
 
@@ -28,18 +37,17 @@
     showTodos = false;
   };
 
+  onMount(() => {
+    window.addEventListener("click", hideTodos);
+  });
 
-onMount(() => {
-  window.addEventListener('click', hideTodos);
-});
-
-onDestroy(() => {
-  window.removeEventListener('click', hideTodos);
-});
+  onDestroy(() => {
+    window.removeEventListener("click", hideTodos);
+  });
 </script>
 
 <div class="todos">
-  <button on:click={toggleShowTodos}>Todos</button>
+  <button class="todos-button" on:click={toggleShowTodos}>Todos</button>
 
   {#if showTodos}
     <!-- svelte-ignore a11y-no-static-element-interactions -->
@@ -49,11 +57,11 @@ onDestroy(() => {
         <input
           type="text"
           bind:value={newTodo.task}
-          placeholder="What our main focus today?"
+          placeholder="What's our main focus today?"
         />
       </form>
       <ul>
-        {#each todos as todo, index (todo.task)}
+        {#each todos as todo, index (todo.id)}
           <li>
             <button
               class="todo-item"
@@ -83,6 +91,20 @@ onDestroy(() => {
     flex-direction: column;
     align-items: end;
     justify-content: end;
+  }
+
+  .todos-button {
+    position: relative;
+  }
+  .todos-button:hover::before {
+    content: "";
+    position: absolute;
+    top: -3px;
+    bottom: -3px;
+    left: -3px;
+    right: -3px;
+    background-color: rgba(0, 0, 0, 0.1);
+    z-index: -1;
   }
 
   .todos-popup {
@@ -121,7 +143,6 @@ onDestroy(() => {
 
   .todo-item:hover {
     text-decoration: line-through;
-    transition: text-decoration 3s ease;
   }
 
   button {
@@ -152,5 +173,7 @@ onDestroy(() => {
 
   .completed {
     text-decoration: line-through;
+    opacity: 0.5;
+    transition: all 0.3s ease;
   }
 </style>

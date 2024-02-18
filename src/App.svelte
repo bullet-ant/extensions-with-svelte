@@ -4,6 +4,18 @@
   import Greetings from "./components/Greetings.svelte";
   import Quote from "./components/Quote.svelte";
   import Todos from "./components/Todos.svelte";
+
+  chrome.runtime
+    .sendMessage({
+      type: "HELLO",
+      message: "Hey Background! I'm the Main app! 👋",
+    })
+    .then((res) => {
+      console.log(res.message);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 </script>
 
 <main>
@@ -14,6 +26,8 @@
   <div class="body">
     <Clock />
     <Greetings />
+    <br />
+    <p>Start with updating <code>App.svelte</code></p>
   </div>
   <div class="footer">
     <Quote />
@@ -22,17 +36,14 @@
 
 <style>
   main {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     padding: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    font-size: 1rem;
   }
 
   .header {
@@ -46,10 +57,25 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    transform: translateY(-1.5rem);
+    transform: translateY(-2.5rem);
   }
   .footer {
     display: flex;
     justify-content: center;
+  }
+
+  code {
+    font-size: 0.9rem;
+    position: relative;
+  }
+  code::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    bottom: -2px;
+    left: -2px;
+    right: -2px;
+    background-color: rgba(0, 0, 0, 0.1);
+    z-index: -1;
   }
 </style>
