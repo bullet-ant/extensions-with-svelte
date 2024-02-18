@@ -12,10 +12,10 @@ npm install
 ## Scripts
 This project includes the following scripts in its package.json:
 
-`dev`: Launches the development server. (may not work as expected with Vite context, read below)
-`build`: Builds the project for production.
-`watch`: Watches for changes in the `src` and `public` directory and triggers a `build` when changes are detected.
-`preview`: Serves the built project locally. (may not work as expected, read below)
+* `dev`: Launches the development server. (may not work as expected with Vite context, read below)
+* `build`: Builds the project for production.
+* `watch`: Watches for changes in the `src` and `public` directory and triggers a `build` when changes are detected.
+* `preview`: Serves the built project locally. (may not work as expected, read below)
 
 > **Note:** The Service Worker is specific to a Chrome extension, so `dev` & `preview` commands may not work as expected in the context of Vite. 
 A workaround is to comment out the pieces of code that contain `chrome.runtime` in your Svelte components (if you're not using them in what you're testing).
@@ -44,9 +44,9 @@ After you've built the project using `npm run build` or `npm run watch`, you can
 ## Documentation
 For more information about the technologies used in this project, refer to the following documentation:
 
-[Svelte](https://svelte.dev)
-[Vite](https://vitejs.dev)
-[Chrome Override Page Extensions](https://developer.chrome.com/docs/extensions/develop/ui/override-chrome-pages)
+* [Svelte](https://svelte.dev)
+* [Vite](https://vitejs.dev)
+* [Chrome Override Page Extensions](https://developer.chrome.com/docs/extensions/develop/ui/override-chrome-pages)
 
 ## Contributing
 Contributions are welcome!
