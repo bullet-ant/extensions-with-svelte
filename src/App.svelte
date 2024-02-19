@@ -44,6 +44,7 @@
     justify-content: space-between;
     align-items: center;
     font-size: 1rem;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   }
 
   .header {
