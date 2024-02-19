@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Inter';
+  src: url('fonts/Inter/Inter-VariableFont_slnt,wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.2;
@@ -29,9 +36,5 @@ body {
   height: 100vh;
   width: 100vw;
   background: #000046; /* fallback for old browsers */
-  background: linear-gradient(
-    to left,
-    #1cb5e0,
-    #000046
-  );
+  background: linear-gradient(to left, #1cb5e0, #000046);
 }

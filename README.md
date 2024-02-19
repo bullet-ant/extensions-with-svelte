@@ -17,8 +17,8 @@ This project includes the following scripts in its package.json:
 * `watch`: Watches for changes in the `src` and `public` directory and triggers a `build` when changes are detected.
 * `preview`: Serves the built project locally. (may not work as expected, read below)
 
-> **Note:** The Service Worker is specific to a Chrome extension, so `dev` & `preview` commands may not work as expected in the context of Vite. 
-A workaround is to comment out the pieces of code that contain `chrome.runtime` in your Svelte components (if you're not using them in what you're testing).
+> **Note:** The Service Worker is specific to a Chrome extension, so `dev` & `preview` commands may not work as expected in the context of Vite. <br>
+A workaround is to comment out the pieces of code that contain `chrome.runtime` in your Svelte components (if you're not using them in what you're testing). <br>
 Otherwise, just `build` your project and load them in Chrome (steps below) and continue your development.
 
 
